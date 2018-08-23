@@ -1,11 +1,13 @@
 set nocompatible " no standard vi - Improved!
 filetype off
 let mapleader = "\<space>"
+set tabstop=2 shiftwidth=2 expandtab " setting up tab behaviour
+set number " show line numbers
+set relativenumber " make the line numbers relative
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
@@ -15,24 +17,15 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'mattn/emmet-vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'isRuslan/vim-es6'
+Plugin 'christoomey/vim-sort-motion'
+Plugin 'elixir-editors/vim-elixir' 
 " END PLUGINS
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" lugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -49,9 +42,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set ts=2 sw=2 eb ci pi " setting up tab behaviour
-set number " show line numbers
-set relativenumber " make the line numbers relative
 " rspec stuff
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
@@ -59,13 +49,24 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
 " normal mode mappings
-nmap 0 ^ 
+nmap 0 ^
 nmap <leader>vr :tabe $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
-nmap <leader>cs :sp db/schema.rb<cr>
+nmap <leader>cs :tabe db/schema.rb<cr>   
+nmap <leader>i i  <esc>i
 
 " insert mode mappings
 imap jk <esc>
 imap kj <esc>
 
-syntax on
+set lcs=tab:>-,trail:.
+
+noremap <TAB> <C-W>w
+
+let g:mix_format_on_save = 1
+
+syntax enable
+set background=light
+let g:solarized_termcolors=256
+set t_Co=256
+colorscheme solarized
