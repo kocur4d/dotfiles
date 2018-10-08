@@ -18,6 +18,7 @@ Plug 'mattn/emmet-vim'
 Plug 'isRuslan/vim-es6'
 Plug 'christoomey/vim-sort-motion'
 Plug 'haishanh/night-owl.vim'
+Plug 'sheerun/vim-polyglot'
 " END PLUGINS
 
 call plug#end()            " required
@@ -45,12 +46,19 @@ map <Leader>a :call RunAllSpecs()<CR>
 nmap 0 ^
 nmap <leader>vr :tabe $MYVIMRC<cr>
 nmap <leader>so :source $MYVIMRC<cr>
-nmap <leader>cs :tabe db/schema.rb<cr>   
 nmap <leader>i i  <esc>i
 
 " insert mode mappings
 imap jk <esc>
 imap kj <esc>
+
+" move lines
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 set lcs=tab:>-,trail:.
 
